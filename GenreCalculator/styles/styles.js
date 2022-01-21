@@ -12,11 +12,14 @@ export const styles = StyleSheet.create({
     flexDirection: "row",
     flexWrap: "wrap",
     justifyContent: "center",
-    marginTop: 10,
     paddingBottom: 10,
 
   },
   
+  headingText:{
+    fontSize: 30,
+  },
+
   buttonText: {
     flex: 1,
     alignSelf: "center",

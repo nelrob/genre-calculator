@@ -43,7 +43,7 @@ function App() {
         onClick = needs to store their image value
         example: pop = 1, rock = 2, etc
         */}
-        <Text>First Genre</Text>
+        <Text style={styles.headingText}>First Genre</Text>
 
         <View style={styles.buttonGroup}>
           <View style={styles.buttonRow}>
@@ -76,7 +76,7 @@ function App() {
           
         </View>
         
-        <Text>Second Genre</Text>
+        <Text style={styles.headingText}>Second Genre</Text>
 
         <View style={styles.buttonGroup}>
           <View style={styles.buttonRow}>
