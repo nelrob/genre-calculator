@@ -62,6 +62,6 @@ export const styles = StyleSheet.create({
 
   outputBox: {
     flex: 0.4,
-    backgroundColor: 'yellow',
+    //backgroundColor: 'yellow',
   },
 });

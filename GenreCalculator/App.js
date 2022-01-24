@@ -1,6 +1,6 @@
 import React, { useState, useEffect} from 'react';
 //import SplashScreen from 'react-native-splash-screen';
-import {TouchableOpacity, View, Text, Image, Modal} from 'react-native';
+import {TouchableOpacity, View, Text, Image, Modal, Alert} from 'react-native';
 import {styles} from './styles/styles'
 
 const App = () => {
@@ -9,10 +9,70 @@ const App = () => {
 
   var firstGenre = ""
   var secondGenre = ""
+  const errorMessage = "You can't calculate two of the same genres! Please try again."
 
   const onClickHandler = () => {
-    // a load of if statements
-    setGenre({icon: require("./assets/pop.png"), name:'New Genre Name'})
+    if (firstGenre == "pop") {
+      if (secondGenre == "pop") {
+        Alert.alert(errorMessage)
+      }
+      else if (secondGenre == "intl") {
+        setGenre({icon: require("./assets/hybrids/kpop.png"), name:'K-Pop'})
+      }
+      else if (secondGenre == "indie") {
+        setGenre({icon: require("./assets/hybrids/indie_pop.png"), name:'Indie Pop'})
+      }
+      else if (secondGenre == "electro") {
+        setGenre({icon: require("./assets/hybrids/electro_pop.png"), name:'Electro Pop'})
+      }
+    }
+    
+    else if (firstGenre == "intl"){
+      if (secondGenre == "intl") {
+        Alert.alert(errorMessage)
+      }
+      else if (secondGenre == "pop") {
+        setGenre({icon: require("./assets/hybrids/kpop.png"), name:'K-Pop'})
+      }
+      else if (secondGenre == "indie") {
+        setGenre({icon: require("./assets/hybrids/brazil_indie.png"), name:'Brazilian Indie'})
+      }
+      else if (secondGenre == "electro") {
+        setGenre({icon: require("./assets/hybrids/electro_house.png"), name:'Electro House'})
+      }
+    }
+
+    else if (firstGenre == "indie"){
+      if (secondGenre == "indie") {
+        Alert.alert(errorMessage)
+      }
+      else if (secondGenre == "pop") {
+        setGenre({icon: require("./assets/hybrids/indie_pop.png"), name:'Indie Pop'})
+      }
+      else if (secondGenre == "intl") {
+        setGenre({icon: require("./assets/hybrids/electro_house.png"), name:'Electro House'})
+      }
+      else if (secondGenre == "electro") {
+        setGenre({icon: require("./assets/hybrids/indietronica.png"), name:'Indietronica'})
+      }
+    }
+
+    
+    else if (firstGenre == "electro"){
+      if (secondGenre == "electro") {
+        Alert.alert(errorMessage)
+      }
+      else if (secondGenre == "pop") {
+        setGenre({icon: require("./assets/hybrids/electro_pop.png"), name:'Electro Pop'})
+      }
+      else if (secondGenre == "intl") {
+        setGenre({icon: require("./assets/hybrids/brazil_indie.png"), name:'Brazilian Indie'})
+      }
+      else if (secondGenre == "indie") {
+        setGenre({icon: require("./assets/hybrids/indietronica.png"), name:'Indietronica'})
+      }
+    }
+
   }
   
   // -- splash screen thign idk
@@ -29,71 +89,70 @@ const App = () => {
               height:30,
               backgroundColor:'#fff',
               borderRadius:50,
-              marginTop: 20,}}
+              marginTop: 25,}}
               onPress={() => setModalOpen (true)}>
             <Text>?</Text>
           </TouchableOpacity>
-          <Text style={{fontSize: 35,margin:10,}}>Genre Calculator</Text>
+          <Text style={{fontSize: 35, marginTop: 15, marginLeft: 15,}}>Genre Calculator</Text>
           <Text style={{fontSize: 13, marginTop:10}}>Calculate two genres and receive a hybrid recommendation!</Text>
         </View>
         
-        {/* images 
-        onClick = needs to store their image value
-        example: pop = 1, rock = 2, etc
-        */}
+        {/* First Row - Image buttons*/}
         <Text style={styles.headingText}>First Genre</Text>
 
         <View style={styles.buttonGroup}>
           <View style={styles.buttonRow}>
-            <TouchableOpacity>     
+            {/* set firstGenre to "pop" */}
+            <TouchableOpacity onPress={() => firstGenre = "pop"}> 
               <Image source={require("./assets/pop.png")} style={styles.buttonImage}/>
             </TouchableOpacity>
           </View>
 
           <View style={styles.buttonRow}>
-            <TouchableOpacity>          
-              <Image source={require("./assets/hiphop.png")} style={styles.buttonImage}/>
+            <TouchableOpacity onPress={() => firstGenre = "intl"}>          
+              <Image source={require("./assets/intl.png")} style={styles.buttonImage}/>
             </TouchableOpacity>
           </View>
 
           <View style={styles.buttonRow}>
-            <TouchableOpacity>          
-              <Image source={require("./assets/alt.png")} style={styles.buttonImage}/>
+            <TouchableOpacity onPress={() => firstGenre = "indie"}>          
+              <Image source={require("./assets/indie.png")} style={styles.buttonImage}/>
             </TouchableOpacity>
           </View>
 
           <View style={styles.buttonRow}>
-            <TouchableOpacity> 
-              <Image source={require("./assets/rock.png")} style={styles.buttonImage}/>
+            <TouchableOpacity onPress={() => firstGenre = "electro"}> 
+              <Image source={require("./assets/electro.png")} style={styles.buttonImage}/>
             </TouchableOpacity>
           </View>
           
         </View>
         
+        {/* Second Row - Image buttons*/}
         <Text style={styles.headingText}>Second Genre</Text>
 
         <View style={styles.buttonGroup}>
           <View style={styles.buttonRow}>
-            <TouchableOpacity>       
+            <TouchableOpacity onPress={() => secondGenre = "pop"}>       
               <Image source={require("./assets/pop.png")} style={styles.buttonImage}/>
             </TouchableOpacity>
           </View>
 
           <View style={styles.buttonRow}>
-            <TouchableOpacity>          
-              <Image source={require("./assets/hiphop.png")} style={styles.buttonImage}/>
+            <TouchableOpacity onPress={() => secondGenre = "intl"}>          
+              <Image source={require("./assets/intl.png")} style={styles.buttonImage}/>
             </TouchableOpacity>
           </View>
 
           <View style={styles.buttonRow}>
-            <TouchableOpacity>          
-              <Image source={require("./assets/alt.png")} style={styles.buttonImage}/>
+            <TouchableOpacity onPress={() => secondGenre = "indie"}>          
+              <Image source={require("./assets/indie.png")} style={styles.buttonImage}/>
             </TouchableOpacity>
           </View>
 
           <View style={styles.buttonRow}>
-            <TouchableOpacity> 
-              <Image source={require("./assets/rock.png")} style={styles.buttonImage}/>
+            <TouchableOpacity onPress={() => secondGenre = "electro"}> 
+              <Image source={require("./assets/electro.png")} style={styles.buttonImage}/>
             </TouchableOpacity>
           </View>
           
@@ -113,7 +172,7 @@ const App = () => {
           
         
         <View style={styles.outputBox}>
-          <Image source={genre.icon} style={{alignSelf:'center',width: 100, height: 100, marginTop: 20}}/>
+          <Image source={genre.icon} style={{alignSelf:'center', width: 100, height: 100, marginTop: 20}}/>
           <Text style={{alignSelf: 'center', fontSize: 30}}>{genre.name}</Text>
           {/* something something useState */}
         </View>
@@ -129,7 +188,10 @@ const App = () => {
         >
           <View style={styles.modalContainer}>
 
-          <TouchableOpacity onPress={() => setModalOpen (false)}>
+          <TouchableOpacity onPress={() => 
+            setModalOpen (false)
+            
+            }>
             {/* close button
               should reset all genre values and text values */}
             <Text>O</Text>
