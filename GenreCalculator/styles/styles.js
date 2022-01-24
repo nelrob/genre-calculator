@@ -4,20 +4,23 @@ export const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#e5e5e5',
-    fontFamily: 'NexaRegular',
+    
+    fontFamily: 'Outfit-VariableFont_wght',
   },
   topContainer: {
-    flex: 0.3,
-    backgroundColor: 'red',
+    flex: 0.23,
     flexDirection: "row",
     flexWrap: "wrap",
     justifyContent: "center",
-    paddingBottom: 10,
-
+    //paddingBottom: 10,
+    width: '100%',
+    borderRadius: 2,
+    //backgroundColor: 'red',
   },
   
   headingText:{
-    fontSize: 30,
+    paddingLeft: 10,
+    fontSize: 20,
   },
 
   buttonText: {
@@ -29,16 +32,16 @@ export const styles = StyleSheet.create({
     flexDirection: "row",
     justifyContent: "space-evenly",
     alignItems: "center",
-    backgroundColor: 'pink',
+    //backgroundColor: 'pink',
     flexWrap: "wrap",
     paddingHorizontal: 3,
     paddingVertical: 3,
+    borderRadius: 10,
   },
   buttonImage: {
-    alignItems:'center',
     justifyContent:'center',
-    width:60,
-    height:60,
+    width:80,
+    height:80,
   },
   buttonRow: {
     backgroundColor: "white",
@@ -46,7 +49,7 @@ export const styles = StyleSheet.create({
     borderRadius: 50,
   },
   modalContainer: {
-    flex:1,
+    flex:0.8,
     backgroundColor: 'transparent',
     paddingHorizontal: 20,
     paddingVertical: 30,
@@ -54,6 +57,11 @@ export const styles = StyleSheet.create({
     elevation: 20,
   },
   modalText:{
+    paddingHorizontal: 10,
+  },
 
-  }
+  outputBox: {
+    flex: 0.4,
+    backgroundColor: 'yellow',
+  },
 });
