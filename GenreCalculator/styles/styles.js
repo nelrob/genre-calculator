@@ -28,7 +28,7 @@ export const styles = StyleSheet.create({
     alignSelf: "center",
   },
   buttonGroup: {
-    flex: 0.2,
+    flex: 0.25,
     flexDirection: "row",
     justifyContent: "space-evenly",
     alignItems: "center",
@@ -44,9 +44,13 @@ export const styles = StyleSheet.create({
     height:80,
   },
   buttonRow: {
-    backgroundColor: "white",
     marginVertical: 10,
     borderRadius: 50,
+
+  },
+  buttonText: {
+    alignSelf: 'center',
+    marginBottom:10,
   },
   modalContainer: {
     flex:0.8,

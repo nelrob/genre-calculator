@@ -5,7 +5,7 @@ import {styles} from './styles/styles'
 
 const App = () => {
   const [modalOpen, setModalOpen] = useState(true)
-  const [genre, setGenre] = useState({icon: require("./assets/default.png"), name: 'Genre Name'})
+  const [genre, setGenre] = useState({icon: require("./assets/default.png"), name: 'Hybrid Genre'})
 
   var firstGenre = ""
   var secondGenre = ""
@@ -50,13 +50,13 @@ const App = () => {
         setGenre({icon: require("./assets/hybrids/indie_pop.png"), name:'Indie Pop'})
       }
       else if (secondGenre == "intl") {
-        setGenre({icon: require("./assets/hybrids/electro_house.png"), name:'Electro House'})
+        setGenre({icon: require("./assets/hybrids/brazil_indie.png"), name:'Brazilian Indie'})
       }
       else if (secondGenre == "electro") {
         setGenre({icon: require("./assets/hybrids/indietronica.png"), name:'Indietronica'})
       }
     }
-
+    // fix issue with permutations
     
     else if (firstGenre == "electro"){
       if (secondGenre == "electro") {
@@ -66,7 +66,7 @@ const App = () => {
         setGenre({icon: require("./assets/hybrids/electro_pop.png"), name:'Electro Pop'})
       }
       else if (secondGenre == "intl") {
-        setGenre({icon: require("./assets/hybrids/brazil_indie.png"), name:'Brazilian Indie'})
+        setGenre({icon: require("./assets/hybrids/electro_house.png"), name:'Electro House'})
       }
       else if (secondGenre == "indie") {
         setGenre({icon: require("./assets/hybrids/indietronica.png"), name:'Indietronica'})
@@ -76,7 +76,7 @@ const App = () => {
   }
   
   // -- splash screen thign idk
-  // useEffect(() => {SplashScreen.hide()})
+  //useEffect(() => {SplashScreen.hide()})
     return(
       <View style={styles.container}>
         <View style={styles.topContainer} elevation={5}>
@@ -106,24 +106,29 @@ const App = () => {
             <TouchableOpacity onPress={() => firstGenre = "pop"}> 
               <Image source={require("./assets/pop.png")} style={styles.buttonImage}/>
             </TouchableOpacity>
+            <Text style = {styles.buttonText}>Pop</Text>
           </View>
+          
 
           <View style={styles.buttonRow}>
             <TouchableOpacity onPress={() => firstGenre = "intl"}>          
               <Image source={require("./assets/intl.png")} style={styles.buttonImage}/>
             </TouchableOpacity>
+            <Text style = {styles.buttonText}>International</Text>
           </View>
 
           <View style={styles.buttonRow}>
             <TouchableOpacity onPress={() => firstGenre = "indie"}>          
               <Image source={require("./assets/indie.png")} style={styles.buttonImage}/>
             </TouchableOpacity>
+            <Text style = {styles.buttonText}>Indie</Text>
           </View>
 
           <View style={styles.buttonRow}>
             <TouchableOpacity onPress={() => firstGenre = "electro"}> 
               <Image source={require("./assets/electro.png")} style={styles.buttonImage}/>
             </TouchableOpacity>
+            <Text style = {styles.buttonText}>Electro</Text>
           </View>
           
         </View>
@@ -136,24 +141,28 @@ const App = () => {
             <TouchableOpacity onPress={() => secondGenre = "pop"}>       
               <Image source={require("./assets/pop.png")} style={styles.buttonImage}/>
             </TouchableOpacity>
+            <Text style = {styles.buttonText}>Pop</Text>
           </View>
 
           <View style={styles.buttonRow}>
             <TouchableOpacity onPress={() => secondGenre = "intl"}>          
               <Image source={require("./assets/intl.png")} style={styles.buttonImage}/>
             </TouchableOpacity>
+            <Text style = {styles.buttonText}>International</Text>
           </View>
 
           <View style={styles.buttonRow}>
             <TouchableOpacity onPress={() => secondGenre = "indie"}>          
               <Image source={require("./assets/indie.png")} style={styles.buttonImage}/>
             </TouchableOpacity>
+            <Text style = {styles.buttonText}>Indie</Text>
           </View>
 
           <View style={styles.buttonRow}>
             <TouchableOpacity onPress={() => secondGenre = "electro"}> 
               <Image source={require("./assets/electro.png")} style={styles.buttonImage}/>
             </TouchableOpacity>
+            <Text style = {styles.buttonText}>Electro</Text>
           </View>
           
         </View>
@@ -164,7 +173,7 @@ const App = () => {
         <View style={{flex: 0.1, paddingHorizontal: 80}}>
           <TouchableOpacity onPress={onClickHandler} style={{borderRadius: 10,  backgroundColor: 'blue',}}>
               <Text style={{
-                fontSize: 40,
+                fontSize: 35,
                 alignSelf: 'center',
               }}>Calculate!</Text>
             </TouchableOpacity>
@@ -184,21 +193,22 @@ const App = () => {
         style={{flex: 0.5,
           backgroundColor: 'rgba(0,0,0,0.5)',
           justifyContent: 'center',
-          alignSelf: 'center',}}
-        >
-          <View style={styles.modalContainer}>
+          alignSelf: 'center',}}>
 
-          <TouchableOpacity onPress={() => 
-            setModalOpen (false)
-            
-            }>
-            {/* close button
-              should reset all genre values and text values */}
-            <Text>O</Text>
-          </TouchableOpacity>
+            <View style={styles.modalContainer}>
 
-            <Text style={styles.modalText}>Welcome to Genre Calculator!</Text>
-          </View>
+            {/* close button */}
+            <TouchableOpacity onPress={() => setModalOpen (false)} style={{alignSelf: 'auto'}}>
+              <Text>Guh</Text>
+            </TouchableOpacity>
+
+              <Text style={styles.modalText}>Welcome to Genre Calculator!</Text>
+              <Text>insert a screenshot here or something</Text>
+              <Text>Select two of the genres you want to combine</Text>
+              <Text>Click the "Calculate!" button to see the hybrid genre</Text>
+              <Text>NOTE: You can't combine two of the same genres.</Text>
+              
+            </View>
         </Modal>
 
       </View>
