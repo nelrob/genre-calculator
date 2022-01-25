@@ -1,10 +1,10 @@
 import React, { useState, useEffect} from 'react';
-//import SplashScreen from 'react-native-splash-screen';
+import SplashScreen from 'react-native-splash-screen';
 import {TouchableOpacity, View, Text, Image, Modal, Alert} from 'react-native';
 import {styles} from './styles/styles'
 
 const App = () => {
-  const [modalOpen, setModalOpen] = useState(true)
+  const [modalOpen, setModalOpen] = useState(true) 
   const [genre, setGenre] = useState({icon: require("./assets/default.png"), name: 'Hybrid Genre'})
 
   var firstGenre = ""
@@ -74,9 +74,11 @@ const App = () => {
     }
 
   }
-  
-  // -- splash screen thign idk
-  //useEffect(() => {SplashScreen.hide()})
+
+    // -- splash screen thign idk
+  useEffect(()=>{
+    SplashScreen.hide();
+  }, [])
     return(
       <View style={styles.container}>
         <View style={styles.topContainer} elevation={5}>
@@ -167,11 +169,9 @@ const App = () => {
           
         </View>
 
-        {/* // calculate button */}
-        {/* onpress: show calculated genre */}
-        
+        {/* Calculate button */}
         <View style={{flex: 0.1, paddingHorizontal: 80}}>
-          <TouchableOpacity onPress={onClickHandler} style={{borderRadius: 10,  backgroundColor: 'blue',}}>
+          <TouchableOpacity onPress={onClickHandler} style={{borderRadius: 10,  backgroundColor: 'green',}}>
               <Text style={{
                 fontSize: 35,
                 alignSelf: 'center',
@@ -191,14 +191,14 @@ const App = () => {
         animationType="slide"
         visible={modalOpen}r
         style={{flex: 0.5,
-          backgroundColor: 'rgba(0,0,0,0.5)',
+          backgroundColor: 'transparent',
           justifyContent: 'center',
           alignSelf: 'center',}}>
 
             <View style={styles.modalContainer}>
 
             {/* close button */}
-            <TouchableOpacity onPress={() => setModalOpen (false)} style={{alignSelf: 'auto'}}>
+            <TouchableOpacity onPress={() => setModalOpen (false)}>
               <Text>Guh</Text>
             </TouchableOpacity>
 
