@@ -4,17 +4,23 @@ import {TouchableOpacity, View, Text, Image, Modal, Alert} from 'react-native';
 import {styles} from './styles/styles'
 
 const App = () => {
+  // Modal
   const [modalOpen, setModalOpen] = useState(true) 
+  // Default icon and title for hybrid output
   const [genre, setGenre] = useState({icon: require("./assets/default.png"), name: 'Hybrid Genre'})
 
+  // variables for storing 1st and 2nd Genre inputs
   var firstGenre = ""
   var secondGenre = ""
+  // Error alert message
   const errorMessage = "You can't calculate two of the same genres! Please try again."
 
+  // Output for when Calculate button is pressed
   const onClickHandler = () => {
+    // Pop permutations
     if (firstGenre == "pop") {
       if (secondGenre == "pop") {
-        Alert.alert(errorMessage)
+        Alert.alert(errorMessage) // Error alert if 2nd genre is same as the 1st
       }
       else if (secondGenre == "intl") {
         setGenre({icon: require("./assets/hybrids/kpop.png"), name:'K-Pop'})
@@ -27,9 +33,10 @@ const App = () => {
       }
     }
     
+    // International permutations
     else if (firstGenre == "intl"){
       if (secondGenre == "intl") {
-        Alert.alert(errorMessage)
+        Alert.alert(errorMessage) // Error alert if 2nd genre is same as the 1st
       }
       else if (secondGenre == "pop") {
         setGenre({icon: require("./assets/hybrids/kpop.png"), name:'K-Pop'})
@@ -42,9 +49,10 @@ const App = () => {
       }
     }
 
+    // Indie permutations
     else if (firstGenre == "indie"){
       if (secondGenre == "indie") {
-        Alert.alert(errorMessage)
+        Alert.alert(errorMessage) // Error alert if 2nd genre is same as the 1st
       }
       else if (secondGenre == "pop") {
         setGenre({icon: require("./assets/hybrids/indie_pop.png"), name:'Indie Pop'})
@@ -56,11 +64,11 @@ const App = () => {
         setGenre({icon: require("./assets/hybrids/indietronica.png"), name:'Indietronica'})
       }
     }
-    // fix issue with permutations
     
+    // Electro permutations
     else if (firstGenre == "electro"){
       if (secondGenre == "electro") {
-        Alert.alert(errorMessage)
+        Alert.alert(errorMessage) // Error alert if 2nd genre is same as the 1st
       }
       else if (secondGenre == "pop") {
         setGenre({icon: require("./assets/hybrids/electro_pop.png"), name:'Electro Pop'})
@@ -75,27 +83,34 @@ const App = () => {
 
   }
 
-    // -- splash screen thign idk
+  // --- SPLASH SCREEN ---
+  // only appears on app's first launch
   useEffect(()=>{
     SplashScreen.hide();
   }, [])
+
+  // --- APP OUTPUT ---
     return(
       <View style={styles.container}>
-        <View style={styles.topContainer} elevation={5}>
+        {/* App Header */}
+        <View style={styles.topContainer} >
+          {/* Help Button - opens Instructions Modal */}
           <TouchableOpacity 
             style={{    
               borderWidth: 0.5,
               alignItems:'center',
               justifyContent:'center',
-              width:30,
-              height:30,
+              width:33,
+              height:33,
               backgroundColor:'#fff',
               borderRadius:50,
               marginTop: 25,}}
               onPress={() => setModalOpen (true)}>
-            <Text>?</Text>
+            <Image source={require("./assets/question-mark.png")} style={{width: 15, height: 15}}/>
           </TouchableOpacity>
-          <Text style={{fontSize: 35, marginTop: 15, marginLeft: 15,}}>Genre Calculator</Text>
+          
+          {/* Title and Description */}
+          <Text style={{fontSize: 35, marginTop: 15, marginLeft: 15, fontWeight: 'bold'}}>Genre Calculator</Text>
           <Text style={{fontSize: 13, marginTop:10}}>Calculate two genres and receive a hybrid recommendation!</Text>
         </View>
         
@@ -103,15 +118,16 @@ const App = () => {
         <Text style={styles.headingText}>First Genre</Text>
 
         <View style={styles.buttonGroup}>
+
+          {/* POP */}
           <View style={styles.buttonRow}>
-            {/* set firstGenre to "pop" */}
             <TouchableOpacity onPress={() => firstGenre = "pop"}> 
               <Image source={require("./assets/pop.png")} style={styles.buttonImage}/>
             </TouchableOpacity>
             <Text style = {styles.buttonText}>Pop</Text>
           </View>
           
-
+          {/* INTERNATIONAL */}
           <View style={styles.buttonRow}>
             <TouchableOpacity onPress={() => firstGenre = "intl"}>          
               <Image source={require("./assets/intl.png")} style={styles.buttonImage}/>
@@ -119,6 +135,7 @@ const App = () => {
             <Text style = {styles.buttonText}>International</Text>
           </View>
 
+          {/* INDIE */}
           <View style={styles.buttonRow}>
             <TouchableOpacity onPress={() => firstGenre = "indie"}>          
               <Image source={require("./assets/indie.png")} style={styles.buttonImage}/>
@@ -126,6 +143,7 @@ const App = () => {
             <Text style = {styles.buttonText}>Indie</Text>
           </View>
 
+          {/* ELECTRO */}
           <View style={styles.buttonRow}>
             <TouchableOpacity onPress={() => firstGenre = "electro"}> 
               <Image source={require("./assets/electro.png")} style={styles.buttonImage}/>
@@ -139,6 +157,8 @@ const App = () => {
         <Text style={styles.headingText}>Second Genre</Text>
 
         <View style={styles.buttonGroup}>
+
+          {/* POP */}
           <View style={styles.buttonRow}>
             <TouchableOpacity onPress={() => secondGenre = "pop"}>       
               <Image source={require("./assets/pop.png")} style={styles.buttonImage}/>
@@ -146,6 +166,7 @@ const App = () => {
             <Text style = {styles.buttonText}>Pop</Text>
           </View>
 
+          {/* INTERNATIONAL */}
           <View style={styles.buttonRow}>
             <TouchableOpacity onPress={() => secondGenre = "intl"}>          
               <Image source={require("./assets/intl.png")} style={styles.buttonImage}/>
@@ -153,6 +174,7 @@ const App = () => {
             <Text style = {styles.buttonText}>International</Text>
           </View>
 
+          {/* INDIE */}
           <View style={styles.buttonRow}>
             <TouchableOpacity onPress={() => secondGenre = "indie"}>          
               <Image source={require("./assets/indie.png")} style={styles.buttonImage}/>
@@ -160,53 +182,54 @@ const App = () => {
             <Text style = {styles.buttonText}>Indie</Text>
           </View>
 
+          {/* ELECTRO */}
           <View style={styles.buttonRow}>
             <TouchableOpacity onPress={() => secondGenre = "electro"}> 
               <Image source={require("./assets/electro.png")} style={styles.buttonImage}/>
             </TouchableOpacity>
             <Text style = {styles.buttonText}>Electro</Text>
           </View>
-          
         </View>
 
-        {/* Calculate button */}
+
+        {/* CALCULATE BUTTON */}
         <View style={{flex: 0.1, paddingHorizontal: 80}}>
-          <TouchableOpacity onPress={onClickHandler} style={{borderRadius: 10,  backgroundColor: 'green',}}>
+          <TouchableOpacity onPress={onClickHandler} style={{borderRadius: 10, backgroundColor: '#0377BC',}}>
               <Text style={{
                 fontSize: 35,
-                alignSelf: 'center',
-              }}>Calculate!</Text>
+                alignSelf: 'center',}}>CALCULATE</Text>
             </TouchableOpacity>
         </View>
           
         
+        {/* HYBRID OUTPUT BOX */}
         <View style={styles.outputBox}>
           <Image source={genre.icon} style={{alignSelf:'center', width: 100, height: 100, marginTop: 20}}/>
           <Text style={{alignSelf: 'center', fontSize: 30}}>{genre.name}</Text>
-          {/* something something useState */}
         </View>
 
-              {/*POPUP MODAL FOR FIRST TIME*/}
+        {/* POPUP MODAL - Appears for app's first load*/}
         <Modal
         animationType="slide"
         visible={modalOpen}r
         style={{flex: 0.5,
-          backgroundColor: 'transparent',
           justifyContent: 'center',
-          alignSelf: 'center',}}>
+          alignSelf: 'center',}}
+        transparent>
 
             <View style={styles.modalContainer}>
 
-            {/* close button */}
+            {/* Close button */}
             <TouchableOpacity onPress={() => setModalOpen (false)}>
-              <Text>Guh</Text>
+              <Image source={require("./assets/close.png")} style={{width: 15, height: 15, marginLeft: 10,}}/>
             </TouchableOpacity>
 
-              <Text style={styles.modalText}>Welcome to Genre Calculator!</Text>
-              <Text>insert a screenshot here or something</Text>
-              <Text>Select two of the genres you want to combine</Text>
-              <Text>Click the "Calculate!" button to see the hybrid genre</Text>
-              <Text>NOTE: You can't combine two of the same genres.</Text>
+            {/* Modal Instructions */}
+              <Text style={{alignSelf: 'center', fontWeight:'bold', fontSize: 25, margin:10}}>Welcome to Genre Calculator!</Text>
+              <Image source={require("./assets/modal_demo.png")} style={{alignSelf:'center',width: 350, height: 290}}/>
+              <Text style={styles.modalText}>1. Select two of the genres you want to combine</Text>
+              <Text style={styles.modalText}>2. Click the "Calculate!" button to see the hybrid genre</Text>
+              <Text style={styles.modalText}>NOTE: You can't combine two of the same genres.</Text>
               
             </View>
         </Modal>

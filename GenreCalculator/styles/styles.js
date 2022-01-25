@@ -3,24 +3,23 @@ import {StyleSheet} from 'react-native';
 export const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#e5e5e5',
-    
-    fontFamily: 'Outfit-VariableFont_wght',
+    backgroundColor: '#6CADD4',
   },
   topContainer: {
     flex: 0.23,
     flexDirection: "row",
     flexWrap: "wrap",
     justifyContent: "center",
-    //paddingBottom: 10,
     width: '100%',
     borderRadius: 2,
-    //backgroundColor: 'red',
+    fontWeight: 'medium',
+    backgroundColor: '#0377BC',
   },
   
   headingText:{
     paddingLeft: 10,
     fontSize: 20,
+    fontWeight: 'bold',
   },
 
   buttonText: {
@@ -32,7 +31,6 @@ export const styles = StyleSheet.create({
     flexDirection: "row",
     justifyContent: "space-evenly",
     alignItems: "center",
-    //backgroundColor: 'pink',
     flexWrap: "wrap",
     paddingHorizontal: 3,
     paddingVertical: 3,
@@ -53,19 +51,24 @@ export const styles = StyleSheet.create({
     marginBottom:10,
   },
   modalContainer: {
-    flex:0.8,
-    backgroundColor: 'transparent',
+    flex: 1,
+    backgroundColor: '#e5e5e5',
     paddingHorizontal: 20,
     paddingVertical: 30,
     borderRadius: 20,
-    elevation: 20,
+    elevation: 10,
   },
   modalText:{
     paddingHorizontal: 10,
+    fontSize: 17,
+    margin: 10
   },
 
   outputBox: {
     flex: 0.4,
-    //backgroundColor: 'yellow',
+    backgroundColor: '#f2f2f2',
+    marginVertical: 10,
+    marginHorizontal: 20,
+    borderRadius: 10,
   },
 });
